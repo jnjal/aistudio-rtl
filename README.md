@@ -58,7 +58,7 @@ chrome://extensions
 ---
 
 ## 📁 ساختار پروژه
-```
+```bash
 aistudio-rtl/
 ├── src/
 │   ├── fonts/
