@@ -1,50 +1,100 @@
-# Google AI Studio RTL Fixer
-
-یک افزونه/اسکریپت ساده و کاربردی برای اصلاح چیدمان راست‌چین (RTL) و بهبود نمایش متن‌های فارسی و عربی در محیط **Google AI Studio**.
-
 <div dir="rtl">
 
-## ویژگی‌ها
-- **راست‌چین‌سازی خودکار:** تشخیص و اعمال استایل RTL روی باکس‌های متنی چت و ورودی‌ها.
-- **اصلاح فونت:** استفاده از فونت‌های استاندارد و خوانا برای زبان فارسی (مثل Vazirmatn یا فونت‌های سیستم).
-- **عدم تداخل:** اعمال تغییرات منحصراً روی بخش چت و پیام‌ها بدون بهم ریختن بقیه بخش‌های رابط کاربری AI Studio.
+# aistudio RTL & Font Fixer
 
-## نحوه استفاده / نصب
+افزونه کروم برای راست‌چین کردن متن‌های فارسی و تغییر فونت سایت [aistudio.google.com](https://aistudio.google.com) به **وزیرمتن** (نسخه محلی، بدون نیاز به اینترنت)
 
-### روش اول: استفاده به عنوان اکستنشن مرورگر (Developer Mode)
-1. این مخزن را دانلود یا `clone` کنید.
-2. مرورگر خود (Chrome/Edge/Brave) را باز کرده و به آدرس `chrome://extensions` بروید.
-3. گزینه **Developer mode** را در بالا سمت راست فعال کنید.
-4. روی دکمه **Load unpacked** کلیک کرده و پوشه پروژه را انتخاب کنید.
+[![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-4285F4?logo=googlechrome&logoColor=white)](#)
+[![Manifest V3](https://img.shields.io/badge/Manifest-V3-green)](#)
+[![License](https://img.shields.io/badge/license-MIT-green)](https://github.com/jnjal/aistudio-rtl/blob/main/LICENSE)
+[![Downloads](https://img.shields.io/badge/downloads-releases-blue?logo=github)](https://github.com/jnjal/aistudio-rtl/releases)
+---
 
-### روش دوم: استفاده از طریق اسکریپت (Tampermonkey / Violentmonkey)
-*(اگر پروژه را به صورت یوزراسکریپت توسعه داده‌اید)*
-1. افزونه Tampermonkey را روی مرورگر خود نصب کنید.
-2. روی اسکریپت `main.user.js` در این رپو کلیک کرده و گزینه **Raw** را بزنید تا پنجره نصب باز شود.
-3. روی **Install** کلیک کنید.
+## ✨ ویژگی‌ها
 
-</div>
+- 🔤 **فونت وزیرمتن** — تمام وزن‌ها (Thin تا Black) به‌صورت محلی بارگذاری می‌شن، بدون وابستگی به CDN
+- ↩️ **راست‌چین هوشمند** — فقط محتوای چت راست‌چین می‌شه، UI اصلی aistudio دست نمی‌خوره
+- 💻 **کدها همیشه LTR** — بلوک‌های کد و `inline code` با فونت monospace و چیدمان چپ‌چین حفظ می‌شن
+- ⚡ **SPA-aware** — با `MutationObserver` بعد از navigate بین مکالمات هم کار می‌کنه
+- 🔘 **دکمه روشن/خاموش** — از popup افزونه می‌تونی سریع غیرفعالش کنی
 
 ---
 
-## Features
-- **Automatic RTL Alignment:** Properly aligns Persian, Arabic, and other right-to-left text in chat bubbles and input areas.
-- **Improved Typography:** Fixes the default font scaling and rendering for better readability.
-- **Isolated Styling:** Only touches the chat messages and prompts, leaving the rest of the AI Studio UI intact.
+## 📦 نصب (Developer Mode)
 
-## Installation
+> افزونه هنوز در Chrome Web Store منتشر نشده — باید دستی نصب بشه
 
-### Method 1: Load as Unpacked Extension
-1. Clone or download this repository.
-2. Open your browser and navigate to `chrome://extensions/`.
-3. Enable **Developer mode** (top-right toggle).
-4. Click **Load unpacked** and select the project folder.
+**۱. دانلود**
 
-### Method 2: Tampermonkey Userscript
-*(If applicable to your repository setup)*
-1. Install the Tampermonkey extension.
-2. Open the `main.user.js` file in this repo and click **Raw**.
-3. Click **Install** in the Tampermonkey dashboard.
+```
+Code → Download ZIP
+```
+یا از releases
 
-## License
-This project is licensed under the MIT License.
+```
+releases → latest.zip
+```
+
+یا با git:
+
+```bash
+git clone https://github.com/jnjal/aistudio-rtl.git
+```
+
+**۲. فعال‌سازی Developer Mode در Chrome**
+
+آدرس زیر رو باز کن:
+
+```
+chrome://extensions
+```
+
+گزینه **Developer mode** رو (گوشه بالا راست) روشن کن.
+
+**۳. بارگذاری افزونه**
+
+روی **Load unpacked** کلیک کن و پوشه `src` داخل ریپو رو انتخاب کن.
+
+---
+
+## 📁 ساختار پروژه
+```
+aistudio-rtl/
+├── src/
+│   ├── fonts/
+│   │   ├── Vazirmatn-Bold.woff2
+│   │   ├── Vazirmatn-Medium.woff2
+│   │   └── Vazirmatn-Regular.woff2
+│   ├── icons/
+│   │   ├── icon128.png
+│   │   ├── icon16.png
+│   │   └── icon48.png
+│   ├── background.js      # بک‌گراند اسکریپت / سرویس ورکر افزونه
+│   ├── content.css        # فونت‌ها، استایل‌های RTL و اوررایدها (به جای style.css)
+│   ├── content.js         # تزریق کلاس‌ها + MutationObserver
+│   ├── manifest.json      # تنظیمات افزونه (Manifest V3)
+│   ├── popup.html         # رابط کاربری دکمه روشن/خاموش
+│   └── popup.js           # منطق toggle و ذخیره‌سازی در Local/Sync Storage
+└── README.md
+```
+## 🛠️ نحوه کارکرد
+
+افزونه با اضافه کردن کلاس `aistudio-rtl` به `<body>` کار می‌کنه. تمام استایل‌ها زیر این کلاس تعریف شدن تا:
+
+- وقتی افزونه **غیرفعاله** هیچ تغییری در صفحه ایجاد نشه
+- `MutationObserver` مطمئن می‌شه بعد از هر navigation داخل SPA کلاد، کلاس حفظ بمونه
+- وضعیت روشن/خاموش با `chrome.storage.local` ذخیره می‌شه
+
+---
+
+## 🔤 درباره فونت وزیرمتن
+
+فونت [Vazirmatn](https://github.com/rastikerdar/vazirmatn) ساخته [رستی کردار](https://github.com/rastikerdar) است و تحت مجوز **SIL Open Font License 1.1** منتشر شده.
+
+---
+
+## 📄 لایسنس
+
+MIT — برای جزئیات فایل [LICENSE](./LICENSE) رو ببین.
+
+</div>
