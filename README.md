@@ -1,19 +1,19 @@
 <div dir="rtl">
 
-# aistudio RTL & Font Fixer
+# Aistudio RTL & Font Fixer
 
-افزونه کروم برای راست‌چین کردن متن‌های فارسی و تغییر فونت سایت [aistudio.google.com](https://aistudio.google.com) به **وزیرمتن** (نسخه محلی، بدون نیاز به اینترنت)
+افزونه کروم برای راست‌چین کردن متن‌های فارسی و تغییر فونت سایت [Aistudio.google.com](https://Aistudio.google.com) به **وزیرمتن** (نسخه محلی، بدون نیاز به اینترنت)
 
 [![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-4285F4?logo=googlechrome&logoColor=white)](#)
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-green)](#)
-[![License](https://img.shields.io/badge/license-MIT-green)](https://github.com/jnjal/aistudio-rtl/blob/main/LICENSE)
-[![Downloads](https://img.shields.io/badge/downloads-releases-blue?logo=github)](https://github.com/jnjal/aistudio-rtl/releases)
+[![License](https://img.shields.io/badge/license-MIT-green)](https://github.com/jnjal/Aistudio-rtl/blob/main/LICENSE)
+[![Downloads](https://img.shields.io/badge/downloads-releases-blue?logo=github)](https://github.com/jnjal/Aistudio-rtl/releases)
 ---
 
 ## ✨ ویژگی‌ها
 
 - 🔤 **فونت وزیرمتن** — تمام وزن‌ها (Thin تا Black) به‌صورت محلی بارگذاری می‌شن، بدون وابستگی به CDN
-- ↩️ **راست‌چین هوشمند** — فقط محتوای چت راست‌چین می‌شه، UI اصلی aistudio دست نمی‌خوره
+- ↩️ **راست‌چین هوشمند** — فقط محتوای چت راست‌چین می‌شه، UI اصلی Aistudio دست نمی‌خوره
 - 💻 **کدها همیشه LTR** — بلوک‌های کد و `inline code` با فونت monospace و چیدمان چپ‌چین حفظ می‌شن
 - ⚡ **SPA-aware** — با `MutationObserver` بعد از navigate بین مکالمات هم کار می‌کنه
 - 🔘 **دکمه روشن/خاموش** — از popup افزونه می‌تونی سریع غیرفعالش کنی
@@ -38,7 +38,7 @@ releases → latest.zip
 یا با git:
 
 ```bash
-git clone https://github.com/jnjal/aistudio-rtl.git
+git clone https://github.com/jnjal/Aistudio-rtl.git
 ```
 
 **۲. فعال‌سازی Developer Mode در Chrome**
@@ -59,7 +59,7 @@ chrome://extensions
 
 ## 📁 ساختار پروژه
 ```bash
-aistudio-rtl/
+Aistudio-rtl/
 ├── src/
 │   ├── fonts/
 │   │   ├── Vazirmatn-Bold.woff2
@@ -79,7 +79,7 @@ aistudio-rtl/
 ```
 ## 🛠️ نحوه کارکرد
 
-افزونه با اضافه کردن کلاس `aistudio-rtl` به `<body>` کار می‌کنه. تمام استایل‌ها زیر این کلاس تعریف شدن تا:
+افزونه با اضافه کردن کلاس `Aistudio-rtl` به `<body>` کار می‌کنه. تمام استایل‌ها زیر این کلاس تعریف شدن تا:
 
 - وقتی افزونه **غیرفعاله** هیچ تغییری در صفحه ایجاد نشه
 - `MutationObserver` مطمئن می‌شه بعد از هر navigation داخل SPA کلاد، کلاس حفظ بمونه
